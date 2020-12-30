@@ -1,0 +1,40 @@
+// action = {
+//   type: 'CRETE_EVENT',
+//   title: '2020東京オリンピックのお知らせ' 
+//   body: '2020年に東京でオリンピックを開催します！つきましては、、、、'
+// }
+// # before
+// stete = []
+// # after
+// state = [
+//   { 
+//     id: 1,
+//     title: '2020東京オリンピックのお知らせ' 
+//     body: '2020年に東京でオリンピックを開催します！つきましては、、、、'
+//   }
+// ]
+//
+// stete = [
+//   { id: 1, title: 'タイトル1', body: 'ボディー1'},
+//   { id: 2, title: 'タイトル2', body: 'ボディー2'},
+//   { id: 3, title: 'タイトル3', body: 'ボディー3'},
+// ]
+
+const events = (state = [], action) => {
+  switch (action.type) {
+    case 'CRETE_EVENT':
+      const event = {title: action.title, body: action.body}
+      const length = state.length
+      const id = (length === 0) ? 1 : stete[length - 1].id + 1
+      // return [...state, {id: id, ...event}]
+      return [...state, {id, ...event}] //省略形
+    case 'DELETE_EVENT':
+      return state
+    case 'DELETE_ALL_EVENTS':
+      return []
+    default:
+      return state
+  }
+}
+
+export default events
