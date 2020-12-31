@@ -8,7 +8,11 @@ import AppContext from '../contexts/AppContext'
 import reducer    from '../reducers'
 
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, [])
+  const initisalState = {
+    events: []
+  }
+  const [state, dispatch] = useReducer(reducer, initisalState)
+
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       <div className='container-fluid'>
