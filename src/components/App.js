@@ -1,6 +1,7 @@
 import React, { useState, useReducer } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import reducer from '../reducers'
+import Event from './Event'
 
 //https://getbootstrap.com/docs/5.0/getting-started/webpack/
 const App = () => {
@@ -25,11 +26,11 @@ const App = () => {
       <form>
         <div className='form-group'>
           <label htmlFor='formEventTitle'>タイトル</label>
-          <input className='form-control' id='formEventTitle' onChange={e => setTitle(e.target.value)}/>
+          <input className='form-control' id='formEventTitle' onChange={e => setTitle(e.target.value)} value={title}/>
         </div>
         <div className='form-group'>
           <label htmlFor='formEventBody'>ボディー</label>
-          <textarea className='form-control' id='formEventBody' onChange={e => setBody(e.target.value)} />
+          <textarea className='form-control' id='formEventBody' onChange={e => setBody(e.target.value)} value={body}/>
         </div>
         <div>
           <button className='btn btn-primary' onClick={addEvent}>イベントを作成する</button>
@@ -46,6 +47,7 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
+          { state.map((event, index) => (<Event key={index} event={event} dispatch={dispatch}/>)) }
         </tbody>
       </table>
     </div>
