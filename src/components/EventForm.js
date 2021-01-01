@@ -35,11 +35,6 @@ const EventForm = () => {
     const result = window.confirm('全てのイベントを本当に削除しても良いですか？')
     if ( result ) {
       dispatch({type: DELETE_ALL_EVENTS})
-      dispatch({
-        type: DELETE_OPERATION_LOGS,
-        description: '全てのイベントを削除しました。',
-        operatedAt: timeCurrentIso8601()
-      })
     }
   }
 
